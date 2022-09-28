@@ -12,20 +12,18 @@ public class Module11 {
 
     public static String namesParser(List<String> names) {
         StringBuilder result = new StringBuilder();
-        IntStream.range(0, names.size()).forEach(index -> {
-            if (index % 2 == 1) result.append(index)
-                                        .append(". ")
-                                        .append(names.get(index))
-                                        .append(", ");
-        });
+        IntStream.range(0, names.size()).filter(x -> x % 2 == 1).forEach(index -> result.append(index)
+                                                                                        .append(". ")
+                                                                                        .append(names.get(index))
+                                                                                        .append(", "));
         if (result.length() != 0) result.delete(result.length() - 2, result.length() - 1);
         return result.toString();
     }
 
     public static List<String> reverseSort(List<String> strings) {
         return strings.stream().map(String::toUpperCase)
-                                .sorted(Comparator.reverseOrder())
-                                .collect(Collectors.toList());
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
     }
 
     public static String sortAndString(int[] arr) {
@@ -54,6 +52,7 @@ public class Module11 {
                     return secondIterator.hasNext();
                 }
             }
+
             @Override
             public T next() {
                 T result;
